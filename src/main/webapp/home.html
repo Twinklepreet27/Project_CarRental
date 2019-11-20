@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+    <title>Home Page</title>
+<meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-storage.js"></script>
+
+
+
+
+</head>
+
+<body class="h-100">
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a class="navbar-brand" style="color: whitesmoke; text-decoration-style: wavy;" href="#">
+                        Car Rental
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" style="color: whitesmoke; text-decoration-style: wavy;" href="home.html">
+                        <span style="color:white;"> Home </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" style="color: whitesmoke; text-decoration-style: wavy;" href="myprofile.html">
+                        <span style="color:white;"> My Profile </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" id="btn-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <br />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm" style="text-align: center;">
+                <button id="getData" class="btn btn-light dropdown bg-dark text-white" type="button"
+                    style="font-size: 30px; align-items: center;">
+                    Search for car
+                </button>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm" style="text-align: center;">
+                <select name="" id="city" class="form-control">
+                    <option value="" disabled selected>City</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Richmond">Richmond</option>
+                    <option value="Surrey">Surrey</option>
+                </select>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="container" id="cardsOfCars">
+        <div class="row" id="1Row">
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="1Image">
+                        <div class="card-title">
+                            <h4 id="1Title"></h4>
+                        </div>
+                        <div class="card-text" id="1Text">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="2Image">
+                        <div class="card-title">
+                            <h4 id="2Title"></h4>
+                        </div>
+                        <div class="card-text" id="2Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="3Image">
+
+                        <div class="card-title">
+                            <h4 id="3Title"></h4>
+                        </div>
+                        <div class="card-text" id="3Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row" id="2Row">
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="4Image">
+
+                        <div class="card-title">
+                            <h4 id="4Title"></h4>
+                        </div>
+                        <div class="card-text" id="4Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="5Image">
+                        <div class="card-title">
+                            <h4 id="5Title"></h4>
+                        </div>
+                        <div class="card-text" id="5Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="6Image">
+
+                        <div class="card-title">
+                            <h4 id="6Title"></h4>
+                        </div>
+                        <div class="card-text" id="6Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row" id="3Row">
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="7Image">
+
+                        <div class="card-title">
+                            <h4 id="7Title"></h4>
+                        </div>
+                        <div class="card-text" id="7Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="8Image">
+
+                        <div class="card-title">
+                            <h4 id="8Title"></h4>
+                        </div>
+                        <div class="card-text" id="8Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <img src="" alt="an image" class="img-fluid" id="9Image">
+
+                        <div class="card-title">
+                            <h4 id="9Title"></h4>
+                        </div>
+                        <div class="card-text" id="9Text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        // document.getElementById("id").value = "user";
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "signin.html";
+            }
+        });
+        //hiding the select options
+        $("#city").hide();
+        //hiding all the cards
+        $("#cardsOfCars").hide();
+
+        $(".btn btn-success").click(function () {
+            window.alert('efsd');
+        });
+    </script>
+</body>
+
+</html>

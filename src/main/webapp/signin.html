@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+    <title>Sign In</title>
+    <link rel="icon" href="design_files/images/back.jpg" type="image/gif" sizes="16x16">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet"
+        href="design_files/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="design_files/css/style.css">
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-storage.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper" style="background-image: url('design_files/images/back.jpg')">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="design_files/images/sahmne1.jpg">
+            </div>
+            <form action="">
+                <h3>Login</h3>
+
+
+                <div class="form-wrapper">
+                    <input type="email" placeholder="Email Address" id="email" class="form-control">
+                    <i class="zmdi zmdi zmdi-email"></i>
+                </div>
+                <div class="form-wrapper">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <i class="zmdi zmdi zmdi-lock"></i>
+                </div>
+                <div class="form-group container-login100-form-btn">
+                    <button id="btn-login" type="button">
+                        Login
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="w-full text-center" style="margin-top: 90%; font-size: 15px;">
+                    <a href="signup.html" class="text-dark">
+                        Not have an account? Sign up.
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <script src="index.js"></script>
+
+    <script>
+        /*
+        $("#btn-login").click(function () {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email != "" && password != null) {
+                var result = firebase.auth().signInWithEmailAndPassword(email, password);
+                result.catch(function (error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode);
+                    window.alert("Message: " + errorMessage);
+                })
+            } else {
+                window.alert("Please fill the fields");
+            }
+        });
+        */
+    </script>
+
+
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var userID = firebase.auth().currentUser.uid;
+                firebase.database().ref('Users/' + userID).once('value').then(function(snapshot){
+                    if(snapshot.val()){
+                        window.location.href = "home.html";
+                    }else{
+                        window.location.href = "accountDetails.html";
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

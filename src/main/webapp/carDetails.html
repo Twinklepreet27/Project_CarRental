@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+    <title>Car Details</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-storage.js"></script>
+
+
+
+
+</head>
+
+
+<body class="h-100" onload="carDetails()">
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a class="navbar-brand" style="color: whitesmoke; text-decoration-style: wavy;" href="#">
+                        Car Rental
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" style="color: whitesmoke; text-decoration-style: wavy;" href="home.html">
+                        <span style="color:white;"> Home </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" style="color: whitesmoke; text-decoration-style: wavy;" href="myprofile.html">
+                        <span style="color:white;"> My Profile </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" id="btn-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <br />
+    <br />
+
+    <h1 style="align-content:center; text-align:center;"> Car Details</h1>
+
+    <br />
+    <br />
+
+    <div class="" style="text-align:center;">
+        <img src="" alt="anImage" id="imageofcar" style="width: 800px; height: 450px;">
+    </div>
+    <br />
+    <br />
+
+
+    <div class="container" style="align-content:center;">
+
+
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500;">Carname:</div>
+            <div class="col-6" id="carnames"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500;">VIN:</div>
+            <div class="col-6" id="vins"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Classification:</div>
+            <div class="col-6" id="classifications"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Fuel:</div>
+            <div class="col-6" id="fuels"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Make:</div>
+            <div class="col-6" id="makes"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Power:</div>
+            <div class="col-6" id="powers"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Price:</div>
+            <div class="col-6" id="prices"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Seating:</div>
+            <div class="col-6" id="seatings"></div>
+        </div>
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Year:</div>
+            <div class="col-6" id="years"></div>
+        </div>
+
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">Start Date:</div>
+            <div class="col-6">
+                <input type="date" name="startDate" value="2019-08-01" id="startingDate">
+            </div>
+        </div>
+
+        <div class="row" style="background-color:lightgray; height: 40px; align-content: center">
+            <div class="col-6" style="font-weight:500">End Date:</div>
+            <div class="col-6">
+                <input type="date" name="endDate" value="2019-08-05" id="endingDate">
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+
+    <div class="container" style="text-align:center;">
+        <button id="nextPage" class="btn btn-primary" onclick= "nextPage()"> Continue to Payment</button>
+
+        <br />
+        <br />
+    </div>
+    <script src="index.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "signin.html";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
